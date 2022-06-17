@@ -31,8 +31,9 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
-    email = models.EmailField(verbose_name="email adress", max_length=60, unique=True)
-    username = models.CharField(max_length=50)
+    email = models.EmailField(verbose_name="Adresse mail", max_length=60, unique=True)
+    username = models.CharField(verbose_name="Nom d'utilisateur",max_length=50)
+    user_img = models.ImageField(verbose_name="Photo de profil", null=True)
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -48,4 +49,7 @@ class User(AbstractBaseUser):
         return self.username
 
     def has_perm(self, perm, obj=None):
+        return True
+
+    def has_module_perms(self, app_label):
         return True
