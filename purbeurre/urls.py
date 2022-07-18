@@ -16,6 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from authentication import views as authv
+from food_substitution import views as fsv
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', fsv.home, name='home'),
+    path('login/',authv.login_page, name="login"),
+    path('logout/', authv.logout_user, name="logout"),
+    path('search/', fsv.searching_page, name="search"),
+    path('profile/', authv.profile_page, name="profile_page"),
 ]
