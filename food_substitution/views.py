@@ -1,14 +1,39 @@
 from django.shortcuts import render
-from PIL import Image
-import os
+from django.db.models import Q
 
-from purbeurre.settings import BASE_DIR
+from food_substitution.models import Products
 
+def replace_artefacts(list_to_correct):
+    cleaned_list = []
+    for element in list_to_correct:
+        cleaned_element = element.replace("'","").replace(" ","").replace("[","").replace("]","")
+        cleaned_list.append(cleaned_element)
+    return cleaned_list
+    
 def home(request):
     return render(request, "food_substitution/home.html")
+    
+def user_search_page(request):
+    products = Products.objects.all()
+    if request.method == "GET":
+        query = request.GET.get('query')
+        if query is not None:
+            products = Products.objects.filter(
+                Q(name__icontains=query)|Q(categories__icontains=query))
+            lenproducts = str(len(products))
+    context = {"products": products,
+               "lenproducts": lenproducts}
 
-def searching_page(request):
-    inPath = BASE_DIR / "assets/img/portfolio/fullsize"
-    list_of_images = os.listdir(inPath)
-    print(type(list_of_images))
-    return render(request, "food_substitution/search_aliment.html", list_of_images)
+    return render(request,
+                "food_substitution/search_aliment.html",
+                context)
+        
+
+def product_page(request, num_id):
+    product = Products.objects.get(id=num_id)
+    guidelines = product.nutritional_guidelines
+    return render(request, 
+                "food_substitution/product.html",
+                {"product": product,
+                "guidelines": guidelines})
+

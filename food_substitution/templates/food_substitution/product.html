@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!--Product detail-->
+<section class="page-section bg-info pb-0" style="background-image:url({{ product.image }}); opacity: 0.8" id="product">
+    <div class="container" style="width:100%">
+        <div class="row d-flex justify-content-center" style="height:200px;">
+            <h1 class="text-center py-4 text-primary bg-info" style="font-size:2rem; width:80%; height:100px">{{ product }}</h1>
+        </div>
+    </div>
+</section>
+<section class="page-section bg-primary py-5" id="product">
+    <div class="container">
+        <div class="row text-center text-info">
+            <div class="col-6">
+                <h1 class="">Nutriscore</h2>
+                {% if product.nustriscore == "a" %}
+                <img src="{% static "assets/img/alphabeta.png" %}" alt="{{product.nustriscore}}-nutriscore-image">
+                {% elif product.nustriscore == "b" %}
+                <img src="{% static "assets/img/alphabetb.png" %}" alt="{{product.nustriscore}}-nutriscore-image">
+                {% elif product.nustriscore == "c" %}
+                <img src="{% static "assets/img/alphabetc.png" %}" alt="{{product.nustriscore}}-nutriscore-image">
+                {% elif product.nustriscore == "d" %}
+                <img src="{% static "assets/img/alphabetd.png" %}" alt="{{product.nustriscore}}-nutriscore-image">
+                {% elif product.nustriscore == "e" %}
+                <img src="{% static "assets/img/alphabete.png" %}" alt="{{product.nustriscore}}-nutriscore-image">
+                {% endif %}
+            </div>
+            <div class="col-6 text-info">
+                <h1 class=''>Repères nutritionnels pour 100g:</h1>
+                {% for element in guidelines %}
+                <p class=''>{{ element }} : {{ guidelines.salt }}</p>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row text-center text-info p-3">
+            <a href="{{product.url}}"><input type="button" style="background-color:#C2C2C2; border:none" value="Voir la fiche d'OpenFoodFacts"></input></a>
+        </div>
+    </div>
+</section>
+{% endblock %}

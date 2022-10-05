@@ -25,29 +25,31 @@
                     <img class="image-fluid pb-1" src="{% static "assets/img/logo_pur_beurre.png" %}" style="height: 40px;"/>
                     Pur Beurre
                 </a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <button class="navbar-toggler navbar-toggler-right bi-justify" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
                         <li>
-                            <div class="input-group p-2">
-                                <input type="search" class="form-control rounded text-primary" placeholder="Chercher" aria-label="Search" aria-describedby="search-addon" />
+                            <div class="input-group pt-3">
+                                <form action="{% url "user_search" %}" method='get'>
+                                    <input type="search" name="query" class="form-control rounded text-primary" placeholder="Chercher" style="background-color:#EEE" aria-label="Search" aria-describedby="search-addon" />
                                 <!--<button type="button" class="btn btn-outline-grey">Chercher</button>-->
+                                </form>
                             </div>
                         </li>
                         {% if user.is_authenticated %}
-                            <li class="nav-item p-2">
+                            <li class="nav-item pt-3">
                                 <a class="nav-link" href="{% url 'profile_page' %}">
                                     <i class="bi bi-person-square fs-1 text-primary"></i>
                                 </a>
                             </li>
-                            <li class="nav-item p-2">
+                            <li class="nav-item pt-3">
                                 <a class="nav-link" href="">
                                     <div class="mb-2">
                                         <img class="image-fluid" src="{% static "assets/img/carrot.png" %}" style="weight: 45px; height: 45px;">
                                     </div>
                                 </a>
                             </li>
-                            <li class="nav-item p-2">
+                            <li class="nav-item pt-3">
                                 <a class="nav-link" href="{% url 'logout' %}">
                                     <div class="mb-2">
                                         <i class="bi bi-box-arrow-right fs-1 text-primary"></i>
@@ -55,7 +57,7 @@
                                 </a>
                             </li>
                         {% else %}
-                            <li class="nav-item p-2">
+                            <li class="nav-item pt-3">
                                 <a class="nav-link" href="{% url 'login' %}">
                                     <div class="mb-2">
                                         <i class="bi bi-box-arrow-in-right fs-1 text-primary"></i>

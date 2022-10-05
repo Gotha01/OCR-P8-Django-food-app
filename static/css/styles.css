@@ -3049,7 +3049,7 @@ textarea.form-control-lg {
 .btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
   color: #fff;
   background-color: var(--bs-success);
-  border-color: var(--bs-psuccess);
+  border-color: var(--bs-success);
 }
 .btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.25rem rgba(246, 122, 88, 0.5);
@@ -6849,7 +6849,7 @@ textarea.form-control-lg {
 }
 
 .border {
-  border: 1px solid #dee2e6 !important;
+  border: 3px solid #dee2e6 !important;
 }
 
 .border-0 {
@@ -6905,7 +6905,7 @@ textarea.form-control-lg {
 }
 
 .border-warning {
-  border-color: #ffc107 !important;
+  border-color: #de9440 !important;
 }
 
 .border-danger {
@@ -11330,7 +11330,7 @@ hr.divider-light {
 
 #mainNav {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  background-color: #fff;
+  background-color: transparent;
   transition: background-color 0.2s ease;
 }
 #mainNav .navbar-brand {
@@ -11390,7 +11390,14 @@ hr.divider-light {
   }
 }
 
+header.profilepage {
+  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/flower_lemon_cookies.jpg");
+  background-size: cover;
+  height: 60%;
+}
+
 header.masthead {
+  height: 90%;
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
   background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/flower_lemon_cookies.jpg");

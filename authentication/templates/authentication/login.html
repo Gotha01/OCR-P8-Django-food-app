@@ -11,9 +11,9 @@
                 <form class="text-primary" method="post">
                     {{ form.as_p }}
                     {% csrf_token %}
-                    <button class="btn btn-primary text-warning" type="submit"> Se connecter </button>
+                    <button class="btn btn-primary text-info" type="submit"> Se connecter </button>
                     <a href={% url "home" %}>
-                        <button class="btn btn-primary text-warning" type="button"> Retour </button>
+                        <button class="btn btn-primary text-info" type="button"> Retour </button>
                     </a>
                 </form>
             </div>
