@@ -5,36 +5,42 @@
 <section class="page-section bg-info pb-0" style="background-image:url({{ product.image }}); opacity: 0.8" id="product">
     <div class="container" style="width:100%">
         <div class="row d-flex justify-content-center" style="height:200px;">
-            <h1 class="text-center py-4 text-primary bg-info" style="font-size:2rem; width:80%; height:100px">{{ product }}</h1>
+            <h1 class="text-center py-4 text-success bg-warning" 
+                style="font-size:2rem; font-weight:bold; width:80%; height:100px">{{ product }}</h1>
         </div>
     </div>
 </section>
-<section class="page-section bg-primary py-5" id="product">
+<section class="page-section bg-info py-5" style="min-height:59%;"id="product">
     <div class="container">
         <div class="row text-center text-info">
             <div class="col-6">
-                <h1 class="">Nutriscore</h2>
+                <h1 class="text-success py-3"style="font-size:1.8rem; font-weight:bold;">Nutriscore</h2>
                 {% if product.nustriscore == "a" %}
-                <img src="{% static "assets/img/alphabeta.png" %}" alt="{{product.nustriscore}}-nutriscore-image">
+                <img class="py-5" src="{% static "assets/img/alphabeta.png" %}" alt="{{product.nustriscore}}-nutriscore-image">
                 {% elif product.nustriscore == "b" %}
-                <img src="{% static "assets/img/alphabetb.png" %}" alt="{{product.nustriscore}}-nutriscore-image">
+                <img class="py-5" src="{% static "assets/img/alphabetb.png" %}" alt="{{product.nustriscore}}-nutriscore-image">
                 {% elif product.nustriscore == "c" %}
-                <img src="{% static "assets/img/alphabetc.png" %}" alt="{{product.nustriscore}}-nutriscore-image">
+                <img class="py-5" src="{% static "assets/img/alphabetc.png" %}" alt="{{product.nustriscore}}-nutriscore-image">
                 {% elif product.nustriscore == "d" %}
-                <img src="{% static "assets/img/alphabetd.png" %}" alt="{{product.nustriscore}}-nutriscore-image">
+                <img class="py-5" src="{% static "assets/img/alphabetd.png" %}" alt="{{product.nustriscore}}-nutriscore-image">
                 {% elif product.nustriscore == "e" %}
-                <img src="{% static "assets/img/alphabete.png" %}" alt="{{product.nustriscore}}-nutriscore-image">
+                <img class="py-5" src="{% static "assets/img/alphabete.png" %}" alt="{{product.nustriscore}}-nutriscore-image">
                 {% endif %}
             </div>
-            <div class="col-6 text-info">
-                <h1 class=''>Repères nutritionnels pour 100g:</h1>
-                {% for element in guidelines %}
-                <p class=''>{{ element }} : {{ guidelines.salt }}</p>
-                {% endfor %}
+            <div class="col-6 text-primary" style="font-size:1.2rem; font-weight: bold">
+                <h1 class='text-success py-3' style="font-size:1.8rem; font-weight:bold;">Repères nutritionnels pour 100g:</h1>
+                <p class='py-2'>Teneur en graisses : {{ guidelines.graisses }}</p>
+                <p class='py-2'>Teneur en sel : {{ guidelines.sel }}</p>
+                <p class='py-2'>Teneur en sucre : {{ guidelines.sucres}}</p>
+                <p class='py-2'>Teneur en graisses saturées : {{ guidelines.graisses_saturees }}</p>
             </div>
         </div>
-        <div class="row text-center text-info p-3">
-            <a href="{{product.url}}"><input type="button" style="background-color:#C2C2C2; border:none" value="Voir la fiche d'OpenFoodFacts"></input></a>
+        <div class="row justify-content-center text-center pt-3">
+            <a class="col-4 text-info bg-primary align-middle p-2" 
+               style="font-weight: bold; font-size: 1.2rem;" 
+               href="{{product.url}}">
+                Voir la fiche d'OpenFoodFacts
+            </a>
         </div>
     </div>
 </section>

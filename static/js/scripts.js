@@ -8,13 +8,14 @@
 // 
 
 window.addEventListener('DOMContentLoaded', event => {
-
+    
     // Navbar shrink function
     var navbarShrink = function () {
         const navbarCollapsible = document.body.querySelector('#mainNav');
         if (!navbarCollapsible) {
             return;
         }
+
         if (window.scrollY === 0) {
             navbarCollapsible.classList.remove('navbar-shrink');
             navbarCollapsible.classList.remove('bg-warning');
@@ -24,6 +25,17 @@ window.addEventListener('DOMContentLoaded', event => {
         }
 
     };
+
+    // Navbar small size function
+    var navbarSize = function () {
+        const navbarSizing = document.body.querySelector('#mainNav');
+        if (window.outerWidth < 1400) {
+            navbarSizing.classList.add('bg-warning')
+        }
+    };
+
+    // Sizing the navbar
+    navbarSize();
 
     // Shrink the navbar 
     navbarShrink();

@@ -32,8 +32,19 @@ def user_search_page(request):
 def product_page(request, num_id):
     product = Products.objects.get(id=num_id)
     guidelines = product.nutritional_guidelines
+    guidelines_fr = {
+        'graisses':guidelines['fat'],
+        'sel':guidelines['salt'],
+        'sucres':guidelines['sugars'],
+        'graisses_saturees':guidelines['saturated-fat']
+    }
+    en_v = ['low','moderate','high']
+    fr_v = ['peu',' modéré','beaucoup']
+    for k,v in guidelines_fr.items():
+        if v in en_v :
+            guidelines_fr[k]=fr_v[en_v.index(v)]
     return render(request, 
                 "food_substitution/product.html",
                 {"product": product,
-                "guidelines": guidelines})
+                "guidelines": guidelines_fr})
 
