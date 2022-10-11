@@ -3,7 +3,7 @@
 {% block content %}
 <!--Search products-->
 <section class="page-section bg-info" id="all_aliments">
-    <div class="container-fluid px-5">
+    <div class="container-fluid px-5" style="min-height:65%;">
         <div class="row">
             {% if lenproducts != "0"%}
                 {% for element in products %}
@@ -64,7 +64,15 @@
                     </div>
                 {% endfor %}
             {% else %}
-            <p> Désolé !<br> Aucun produit ne correspond à votre recherche. </p>
+                <div class="col-lg-812 text-primary text-center">
+                    <h2 class="my-5">Désolé !<br> Aucun produit ne correspond à votre recherche.</h2>
+                    <div class="input-group justify-content-center p-2">
+                        <form action="{% url "user_search" %}" method='get'>
+                            <input type="search" name="query" class="rounded align-middle m-0" placeholder="Produit" style="background-color:#EEE; height: 100%" aria-label="Search" aria-describedby="search-addon" />
+                            <button type="submit" class="btn btn-primary btn-block align-middle m-0">Chercher</button>
+                        </form>
+                    </div>
+                </div>
             {% endif %}
         </div>
     </div>
