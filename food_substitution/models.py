@@ -28,10 +28,3 @@ class Favorites(models.Model):
 
     user = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE)
     products = models.ForeignKey(Products, null=True, on_delete=models.SET_NULL)
-
-    def __str__(self):
-        """
-        Returns:
-            tuple: (username, product_name).
-        """
-        return ({self.user.username},{self.products.name})

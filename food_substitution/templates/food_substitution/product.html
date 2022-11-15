@@ -15,17 +15,9 @@
         <div class="row text-center text-info">
             <div class="col-6">
                 <h1 class="text-success py-3"style="font-size:1.8rem; font-weight:bold;">Nutriscore</h2>
-                {% if product.nustriscore == "a" %}
-                <img class="py-5" src="{% static "assets/img/alphabeta.png" %}" alt="{{product.nustriscore}}-nutriscore-image">
-                {% elif product.nustriscore == "b" %}
-                <img class="py-5" src="{% static "assets/img/alphabetb.png" %}" alt="{{product.nustriscore}}-nutriscore-image">
-                {% elif product.nustriscore == "c" %}
-                <img class="py-5" src="{% static "assets/img/alphabetc.png" %}" alt="{{product.nustriscore}}-nutriscore-image">
-                {% elif product.nustriscore == "d" %}
-                <img class="py-5" src="{% static "assets/img/alphabetd.png" %}" alt="{{product.nustriscore}}-nutriscore-image">
-                {% elif product.nustriscore == "e" %}
-                <img class="py-5" src="{% static "assets/img/alphabete.png" %}" alt="{{product.nustriscore}}-nutriscore-image">
-                {% endif %}
+                <img class="py-5" 
+                    src="{% static 'assets/img/'|add:product.nustriscore|add:'.png' %}"
+                    alt="{{product.nustriscore}}-nutriscore-image">
             </div>
             <div class="col-6 text-primary" style="font-size:1.2rem; font-weight: bold">
                 <h1 class='text-success py-3' style="font-size:1.8rem; font-weight:bold;">Repères nutritionnels pour 100g:</h1>

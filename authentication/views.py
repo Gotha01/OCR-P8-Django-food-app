@@ -43,8 +43,6 @@ def signup_page(request):
             return redirect(settings.LOGIN_REDIRECT_URL)
     return render(request, 'authentication/signup.html', context={'form':form})
 
-    
-
 @login_required
 def profile_page(request):
     return render(request,'authentication/profile_page.html')

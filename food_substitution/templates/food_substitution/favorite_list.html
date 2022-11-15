@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!--Favorite products-->
+<section class='page-section bg-info' id='all_aliments'>
+    <div class='container-fluid px-5' style='min-height:65%;'>
+        <div class='row'>
+            {% for element in user_fav_prod %}
+                <div class='col-xl-4 p-4'>
+                    <div class='d-flex justify-content-end'>
+                        <img src="{% static 'assets/img/'|add:element.nustriscore|add:'.png' %}"
+                            class=''
+                            style='margin-right:30%; width:65px; height:auto;'
+                            alt=''>
+                    </div>
+                    <div class='p-3' style='height: 250px; text-align: center'>
+                        <img src='{{ element.image }}'
+                            class='rounded'
+                            style='max-height: 100%; max-width:100% ;width: auto;'
+                            alt='...' title='{{ element }}-image'>
+                    </div>
+                    <div class='' style='height:150px'>
+                        <a href="{% url 'product_page' element.id %}" style='text-decoration: none;'>
+                            <h1 class='text-center text-primary' style='font-size: 22px;'>{{ element }}</h1>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
