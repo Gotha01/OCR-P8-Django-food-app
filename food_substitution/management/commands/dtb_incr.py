@@ -12,13 +12,13 @@ class Command(BaseCommand):
         parser.add_argument(
             'category', 
             type=str,
-            help='Name of the category name to be added to the database. (min. 3 caracters'
+            help='Name of the category name to be added to the database. (min. 3 caracters).'
             )
         parser.add_argument(
             '--nbr_datas', 
             type=int, 
             default=100, 
-            help="Number of product per category (min. 50 products)"
+            help="Number of product per category (min. 50 products)."
             )
         
     def handle(self, *args, **options):

@@ -5,27 +5,48 @@
 <section class='page-section bg-info' id='all_aliments'>
     <div class='container-fluid px-5' style='min-height:65%;'>
         <div class='row'>
-            {% for element in user_fav_prod %}
-                <div class='col-xl-4 p-4'>
-                    <div class='d-flex justify-content-end'>
-                        <img src="{% static 'assets/img/'|add:element.nustriscore|add:'.png' %}"
-                            class=''
-                            style='margin-right:30%; width:65px; height:auto;'
-                            alt=''>
-                    </div>
-                    <div class='p-3' style='height: 250px; text-align: center'>
-                        <img src='{{ element.image }}'
-                            class='rounded'
-                            style='max-height: 100%; max-width:100% ;width: auto;'
-                            alt='...' title='{{ element }}-image'>
-                    </div>
-                    <div class='' style='height:150px'>
-                        <a href="{% url 'product_page' element.id %}" style='text-decoration: none;'>
-                            <h1 class='text-center text-primary' style='font-size: 22px;'>{{ element }}</h1>
-                        </a>
+            {% if fav_len == 0 %}
+                <div class='col-lg-812 text-success text-center'>
+                    <h2 class='my-5'>Vous n'avez encore sauvegardé aucun produit.<br> Faites une nouvelle recherche et validez votre produit:</h2>
+                    <div class='input-group justify-content-center p-2'>
+                        <form action='{% url "user_search" %}' method='get'>
+                            <input type='search' 
+                                name='query' 
+                                class='border rounded align-middle m-0' 
+                                placeholder='Produit' 
+                                style='background-color:#EEE; height: 100%' 
+                                aria-label='Search' 
+                                aria-describedby='search-addon' />
+                            <button type='submit' 
+                                    class='btn btn-primary btn-block align-middle m-0'>Chercher</button>
+                        </form>
                     </div>
                 </div>
-            {% endfor %}
+            {% else %}
+                {% for element in user_fav_prod %}
+                    <div class='col-xl-4 p-5'>
+                        <div class='card m-5 border border-primary' style="background-color: #E7E7E7">
+                            <div class='d-flex justify-content-end pt-4'>
+                                <img src="{% static 'assets/img/'|add:element.nustriscore|add:'.png' %}"
+                                    class=''
+                                    style='margin-right:20%; width:65px; height:auto;'
+                                    alt=''>
+                            </div>
+                            <div class='p-3' style='height: 250px; text-align: center'>
+                                <img src='{{ element.image }}'
+                                    class='rounded'
+                                    style='max-height: 100%; max-width:100%;'
+                                    alt='...' title='{{ element }}-image'>
+                            </div>
+                            <div class='' style='height:100px'>
+                                <a href="{% url 'product_page' element.id %}" style='text-decoration: none;'>
+                                    <h1 class='text-center text-success' style='font-size: 22px;'>{{ element }}</h1>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
 </section>

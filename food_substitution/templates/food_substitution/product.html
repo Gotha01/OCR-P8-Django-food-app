@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <!--Product detail-->
-<section class="page-section bg-info pb-0" style="background-image:url({{ product.image }}); opacity: 0.8" id="product">
+<section class="page-section bg-info pb-0" style="background-image:url({{ product.image }});" id="product">
     <div class="container" style="width:100%">
         <div class="row d-flex justify-content-center" style="height:200px;">
             <h1 class="text-center py-4 text-success bg-warning" 
@@ -30,7 +30,8 @@
         <div class="row justify-content-center text-center pt-3">
             <a class="col-4 text-info bg-primary align-middle p-2" 
                style="font-weight: bold; font-size: 1.2rem;" 
-               href="{{product.url}}">
+               href="{{product.url}}"
+               target="_blank">
                 Voir la fiche d'OpenFoodFacts
             </a>
         </div>
