@@ -1,18 +1,11 @@
 from django.shortcuts import render, redirect
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
-from django.db.models import QuerySet
 
 from food_substitution.models import Products
 from food_substitution.models import Favorites
 
-def replace_artefacts(list_to_correct):
-    cleaned_list = []
-    for element in list_to_correct:
-        cleaned_element = element.replace("'","").replace(" ","").replace("[","").replace("]","")
-        cleaned_list.append(cleaned_element)
-    return cleaned_list
-    
+
 def home(request):
     return render(request, "food_substitution/home.html")
     
@@ -20,7 +13,6 @@ def user_search_page(request):
     CHARACTER_FILTER = [" '","'"]
     NO_SEARCH = NO_RESULT = 0
     cat_dict, favorites_id_list, final_category_list = {}, [], []
-
     if request.method == "GET":
         query = request.GET.get('query')
         if query is not None:
@@ -123,6 +115,7 @@ def favorite_list_page(request):
         context
         )
 
+@login_required
 def add_favorite(request):
     num_id = request.POST.get('prodId')
     current_user = request.user

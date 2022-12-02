@@ -21,7 +21,7 @@ class Products(models.Model):
     url = models.URLField(max_length=200)
     
     def __str__(self):
-        return self.name
+        return self.name[:50]
 
 class Favorites(models.Model):
     """Favorites model."""
