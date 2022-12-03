@@ -46,6 +46,5 @@ class TestViews(TestCase):
             )
         self.client.login(email='test@test.com', password='12345')
         response = self.client.post(self.user_search_post_url)
-        print(response)
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response,'food_substitution/favorite_list.html')
