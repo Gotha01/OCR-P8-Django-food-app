@@ -7,7 +7,7 @@ La startup Pur Beurre, avec laquelle vous avez déjà travaillé, souhaite déve
 
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://choosealicense.com/licenses/mit/)
 
-![](https://img.shields.io/badge/Version-v0.0.3-orange)
+![](https://img.shields.io/badge/Version-v0.2.3-orange)
 
 
 ## Support
