@@ -8,6 +8,9 @@ from food_substitution.models import Favorites
 
 def home(request):
     return render(request, "food_substitution/home.html")
+
+def legal_view(request):
+    return render(request, "food_substitution/legal_notices.html")
     
 def user_search_page(request):
     CHARACTER_FILTER = [" '","'"]

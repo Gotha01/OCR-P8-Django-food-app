@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse, resolve
-from food_substitution.views import home, user_search_page, add_favorite, favorite_list_page, product_page
+from food_substitution.views import home, legal_view, user_search_page, add_favorite, favorite_list_page, product_page
 
 
 class TestUrls(TestCase):
@@ -8,6 +8,10 @@ class TestUrls(TestCase):
     def test_home_url_is_resolved(self):
         url = reverse('home')
         self.assertEquals(resolve(url).func, home)
+        
+    def test_home_url_is_resolved(self):
+        url = reverse('legal')
+        self.assertEquals(resolve(url).func, legal_view)
     
     def test_user_search_page_url_is_resolved(self):
         url = reverse('user_search')

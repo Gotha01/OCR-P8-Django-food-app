@@ -7,7 +7,7 @@ La startup Pur Beurre, avec laquelle vous avez déjà travaillé, souhaite déve
 
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://choosealicense.com/licenses/mit/)
 
-![](https://img.shields.io/badge/Version-v0.2.3-orange)
+![](https://img.shields.io/badge/Version-v1.0.0-orange)
 
 
 ## Support
@@ -28,7 +28,8 @@ For support, email fake@fake.com or join our Slack channel.
 # Github link
 
 All my repositories on [Github](https://github.com/Gotha01?tab=repositories).
-## Run Locally
+
+## Run Locally on DEBUG = True
 
 Clone the project
 

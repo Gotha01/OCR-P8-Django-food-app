@@ -15,5 +15,6 @@ urlpatterns = [
     path('search/<int:num_id>/', fsv.product_page, name="product_page"),
     path('profile/', authv.profile_page, name="profile_page"),
     path('addfavorite/', fsv.add_favorite, name='add_favorite'),
-    path('favorite/', fsv.favorite_list_page, name="fav_page")
+    path('favorite/', fsv.favorite_list_page, name="fav_page"),
+    path('legal/', fsv.legal_view, name='legal')
 ]
