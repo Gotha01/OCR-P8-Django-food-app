@@ -25,10 +25,6 @@ For support, email fake@fake.com or join our Slack channel.
 | Biscuit trempé    | ![](https://via.placeholder.com/10/e8a75d?text=+) #e8a75d |
 | Bonbon rigolo     | ![](https://via.placeholder.com/10/86ebe6?text=+) #86ebe6 |
 
-# Github link
-
-All my repositories on [Github](https://github.com/Gotha01?tab=repositories).
-
 ## Run Locally on DEBUG = True
 
 Clone the project
