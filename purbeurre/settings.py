@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-lxwpleh#7h0dgqbqm8d_hw$%nsu#%z&6a65rd%jdhe@*r(2py6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get("ENV") == "RODUCTION":
+if os.environ.get("ENV") == "PRODUCTION":
     DEBUG = False
 else:
     DEBUG = True
@@ -85,8 +85,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'purbeurre_db',
-        'USER': 'postgres',
-        'PASSWORD': os.environ['POSTGREPASS'],
+        'USER': 'quenti',
+        'PASSWORD': os.environ.get('POSTGREPASS'),
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -126,6 +126,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+
 if os.environ.get('ENV') == 'PRODUCTION':
     # Static files settings.
     PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))

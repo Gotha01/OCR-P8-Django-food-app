@@ -7,12 +7,12 @@ La startup Pur Beurre, avec laquelle vous avez déjà travaillé, souhaite déve
 
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://choosealicense.com/licenses/mit/)
 
-![](https://img.shields.io/badge/Version-v1.0.0-orange)
+![](https://img.shields.io/badge/Version-v1.0.1-orange)
 
 
 ## Support
 
-For support, email fake@fake.com or join our Slack channel.
+For support, email fake@fake.com or by my Github profile.
 
  
 # Color Reference
@@ -57,6 +57,19 @@ Open website on a browser
     http://127.0.0.1:8000/
 ```
 
+## Test and coverage
+
+Running test
+
+```bash
+coverage run --source='.' manage.py test
+```
+
+Test report
+
+```bash
+coverage report
+```
 
 ## Github link
 
