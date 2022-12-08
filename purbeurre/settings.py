@@ -85,8 +85,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'purbeurre_db',
-        'USER': 'quenti',
-        'PASSWORD': os.environ.get('POSTGREPASS'),
+        'USER': 'postgres',
+        'PASSWORD': os.environ['POSTGREPASS'],
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -127,17 +127,16 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-
 if os.environ.get('ENV') == 'PRODUCTION':
     # Static files settings.
     PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-    STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+    STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
     #Extra places for collectstatic to find static files.
-    STATICFILES_DIRS = [
-            BASE_DIR / "static"
-    ]
+    STATICFILES_DIRS = (
+            BASE_DIR / "static",
+    )
 
 # Authentication user
 
