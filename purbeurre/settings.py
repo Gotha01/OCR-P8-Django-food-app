@@ -24,13 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-lxwpleh#7h0dgqbqm8d_hw$%nsu#%z&6a65rd%jdhe@*r(2py6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get("ENV") == "PRODUCTION":
-    DEBUG = False
-else:
-    DEBUG = True
+
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
-
 
 # Application definition
 
@@ -127,16 +124,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-if os.environ.get('ENV') == 'PRODUCTION':
-    # Static files settings.
-    PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
-    STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-
-    #Extra places for collectstatic to find static files.
-    STATICFILES_DIRS = (
-            BASE_DIR / "static",
-    )
+#Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+        BASE_DIR / "static",
+)
 
 # Authentication user
 

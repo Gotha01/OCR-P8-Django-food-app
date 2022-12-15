@@ -18,6 +18,10 @@ def user_search_page(request):
     cat_dict, favorites_id_list, final_category_list = {}, [], []
     if request.method == "GET":
         query = request.GET.get('query')
+        try:
+            query_first_product = Products.objects.filter(Q(name__icontains=query))
+        except Products.DoesNotExist:
+            query_first_product = None
         if query is not None:
             len_query = len(query)
             if len_query == 0:
@@ -63,6 +67,7 @@ def user_search_page(request):
                         favorites_id_list.append(element['products_id'])
                     context = {
                         'query': query,
+                        'query_first_product': query_first_product[0],
                         'products': final_products,
                         'len_query': len_query,
                         'favorites_id_list': favorites_id_list

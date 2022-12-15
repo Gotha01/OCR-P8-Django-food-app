@@ -3,10 +3,11 @@
 {% block content %}
 <!--Product detail-->
 <section class="page-section bg-info pb-0" style="background-image:url({{ product.image }});" id="product">
-    <div class="container" style="width:100%">
-        <div class="row d-flex justify-content-center" style="height:200px;">
-            <h1 class="text-center py-4 text-success bg-warning" 
-                style="font-size:2rem; font-weight:bold; width:80%; height:100px">{{ product }}</h1>
+    <div class="container-fluid" style="width:100%">
+        <div class='row content-align-center text-primary text-center p-5'>
+            <h1 style='text-transform:uppercase;
+                    font-weight:bold;
+                    background-color: white;'>{{ product }}</h1>
         </div>
     </div>
 </section>

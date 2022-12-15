@@ -3,6 +3,17 @@
 {% block content %}
 <!--Search products-->
 <section class='page-section bg-info' id='all_aliments'>
+    {% if query != None %}
+        <div class='container-fluid' style='height:250px;background-image: 
+                                            url({{query_first_product.image}});
+                                            background-repeat: repeat-x;'>
+            <div class='row content-align-center text-primary text-center m-5 p-5'>
+                <h1 style='text-transform:uppercase;
+                        font-weight:bold;
+                        background-color: white;'>{{query}}</h1>
+            </div>
+        </div>
+    {% endif %}
     <div class='container-fluid px-5' style='min-height:65%;'>
         <div class='row'>
             {% if no_search %}
@@ -10,9 +21,12 @@
             {% elif no_result %}
                 {% include 'food_substitution/no_result.html' %}
             {% else %}
+                <div class='row text-primary text-center py-5'>
+                    <h2>Vous pouvez remplacer cet aliment par :</h2>
+                </div>
                 {% for element in products %}
-                    <div class='col-xl-4 p-5'>
-                        <div class="card m-5 border border-primary" style="background-color: #E7E7E7">
+                    <div class='col-12 col-md-6 col-xl-4 p-2 px-3'>
+                        <div class="card m-md-5 border border-primary" style="background-color: #E7E7E7">
                             <div class='d-flex justify-content-end pt-3'>
                                 <img src="{% static 'assets/img/'|add:element.nustriscore|add:'.png' %}"
                                     class=''
@@ -27,7 +41,7 @@
                             </div>
                             <div class='' style='height:100px'>
                                 <a href="{% url 'product_page' element.id %}" style='text-decoration: none;'>
-                                    <h1 class='text-center text-primary' style='font-size: 22px;'>{{ element }}</h1>
+                                    <h1 class='text-center text-primary' style='font-size: 20px;'>{{ element }}</h1>
                                 </a>
                                 {% if user.is_authenticated %}
                                     <div class='d-flex justify-content-center text-primary'>
