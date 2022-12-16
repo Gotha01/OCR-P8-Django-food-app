@@ -14,20 +14,29 @@ class LoginPageView(View):
         form = self.form_class()
         message = ''
         return render(
-            request, self.template_name, context={'form': form, 'message':message})
+            request,
+            self.template_name,
+            context={'form': form, 'message':message}
+            )
 
     def post(self, request):
         form = self.form_class(request.POST)
         message = ""
         if form.is_valid():
-            user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
+            user = authenticate(
+                username=form.cleaned_data['username'], 
+                password=form.cleaned_data['password']
+                )
             if user is not None:
                 login(request, user)
                 return redirect('home')
             else:
                 message = 'Identifiants invalides.'
         return render(
-            request, self.template_name, context={'form': form, 'message':message}) 
+            request,
+            self.template_name,
+            context={'form': form, 'message':message}
+            ) 
 
 def logout_user(request):
     logout(request)
@@ -41,7 +50,11 @@ def signup_page(request):
             user = form.save()
             login(request, user)
             return redirect(settings.LOGIN_REDIRECT_URL)
-    return render(request, 'authentication/signup.html', context={'form':form})
+    return render(
+        request,
+        'authentication/signup.html',
+        context={'form':form}
+        )
 
 @login_required
 def profile_page(request):

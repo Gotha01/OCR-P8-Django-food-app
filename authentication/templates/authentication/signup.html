@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 <header class="masthead">
-    <section class="page-section bg-info mt-15 text-center text-success" 
-             style="margin: 10rem 2rem 2rem 2rem; 
-                    padding: 1rem;
+    <section class="page-section bg-info m-5 text-center text-success" 
+             style="padding: 1rem;
                     font-weight: bold;" 
              id="connect">
         <div class="container px-4 px-lg-5 ">
             <div class="row justify-content-center">
-                <div class="col-8 ">
+                <div class="col-12 ">
                     <h2 style="text-decoration: underline;">Inscription</h2>
                     <form method="post">
                         {% if form.errors %}
@@ -19,7 +18,7 @@
                         {% for field in form %}
                             <div class="row mh-10">
                                 <div class="input-group">
-                                    <div class="col-6 py-2">
+                                    <div class="col-12 col-md-6 py-2">
                                         {% if field.label == "Username" %}
                                             Nom d'utilisateur
                                         {% elif field.label == "Mot de passe" %}
@@ -28,7 +27,7 @@
                                             {{field.label}}
                                         {% endif %}
                                     </div>
-                                    <div class="col-6 rounded text-primary">
+                                    <div class="col-12 col-md-6 rounded text-primary">
                                         {{ field }}
                                     </div>
                                 </div>
@@ -36,7 +35,7 @@
                         {% csrf_token %}
                         {% endfor %}
                         <button type="submit" 
-                                class="btn btn-primary btn-block align-middle m-0">
+                                class="btn btn-primary btn-block align-middle mt-3 m-0">
                             S’inscrire
                         </button>
                     </form>
