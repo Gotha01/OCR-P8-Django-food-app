@@ -77,17 +77,16 @@ WSGI_APPLICATION = 'purbeurre.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-if os.environ['POSTGREPASS']:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'purbeurre_db',
-            'USER': 'postgres',
-            'PASSWORD': os.environ['POSTGREPASS'],
-            'HOST': 'localhost',
-            'PORT': '5432',
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'purbeurre_db',
+        'USER': 'postgres',
+        'PASSWORD': os.environ['POSTGREPASS'],
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
+}
 
 
 # Password validation
