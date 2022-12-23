@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'purbeurre_db',
         'USER': 'postgres',
-        'PASSWORD': os.environ['POSTGREPASS'],
+        'PASSWORD': 'Bgbcbrk!38400',
         'HOST': 'localhost',
         'PORT': '5432',
     }
