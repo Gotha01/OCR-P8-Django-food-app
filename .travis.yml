@@ -2,9 +2,11 @@ language: python
 python:
   - '3.8'
 
+addons:
+  postgresql: "9.4"
+  
 before_script:
   - pip install -r requirements.txt
-  - export POSTGREPASS=pp
 
 branches: 
   only:
