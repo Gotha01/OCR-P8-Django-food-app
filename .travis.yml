@@ -14,7 +14,7 @@ branches:
 env: DJANGO_SETTINGS_MODULE=purbeurre.settings.travis
 
 services:
-  - postgresql
+  - postgresql-12
 
 script:
   - python manage.py test
