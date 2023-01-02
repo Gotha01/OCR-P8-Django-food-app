@@ -2,12 +2,6 @@ language: python
 python:
   - '3.8'
 
-addons:
-  postgresql: '11'
-  apt:
-    packages:
-      - postgresql-server-dev-11
-
 before_script:
   - pip install -r requirements.txt
   - psql -c 'create database travis_ci_test;' -U postgres
