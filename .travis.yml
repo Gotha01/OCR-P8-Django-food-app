@@ -6,21 +6,19 @@ services:
   - postgresql
 
 addons:
-  postgresql: "12"
+  postgresql: "13"
   apt:
     packages:
-    - postgresql-12
-    - postgresql-client-12
+    - postgresql-13
+    - postgresql-client-13
 
 env:
   global:
   - PGPORT=5433
-  - PGUSER=travis
 
 before_script:
   - pip install -r requirements.txt
-  - dpkg -l | grep postgresql
-  - psql -c 'create database travis_ci_test;' -U postgres
+  - psql -p 5433 -U postgres -c 'create database travis_ci_test;'
 
 branches: 
   only:
