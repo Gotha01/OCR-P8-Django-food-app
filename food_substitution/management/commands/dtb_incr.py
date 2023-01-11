@@ -3,7 +3,7 @@ import requests
 from django.core.management.base import BaseCommand, CommandError
 from django.core.exceptions import ObjectDoesNotExist
 
-from food_substitution.models import Products
+from food_substitution.models import Products, Favorites
 
 class Command(BaseCommand):
     help = "Incrementing the PurBeurre application database"
@@ -20,6 +20,11 @@ class Command(BaseCommand):
             default=100, 
             help="Number of product per category (min. 50 products)."
             )
+        parser.add_argument(
+            '--upgrade',
+            default=None,
+            help="Overwrite old data if not in a user favorite products list"
+        )
         
     def handle(self, *args, **options):
         """From argument, increment the app's database using category names
@@ -78,7 +83,7 @@ class Command(BaseCommand):
                             element['product_name_fr'] != '' and\
                             '\n' not in element['product_name_fr']:
                             try:
-                                old_product = Products.objects.get(name=element['product_name_fr'])
+                                _ = Products.objects.get(name=element['product_name_fr'])
                             except ObjectDoesNotExist:
                                 p = Products(
                                     name=element['product_name_fr'],
@@ -90,9 +95,29 @@ class Command(BaseCommand):
                                     url=element['url'])
                                 p.save()
 
+        class Del_data():
+            def __init__(self):
+                self.favorite_id_list = []
+                self.all_products = Products.objects.all()
+                print(len(self.all_products))
+                self.all_favorites = Favorites.objects.all()
+                self.search_for_non_favorite_products()
+                print(len(self.all_products))
+
+            def search_for_non_favorite_products(self):
+                for favorite in self.all_favorites:
+                    self.favorite_id_list.append(favorite.products.id)
+                for product in self.all_products:
+                    if product.id not in self.favorite_id_list:
+                        target_product = Products.objects.get(id=product.id)
+                        target_product.delete()
+
+        len_ok = False
         categories = options['category'].split(',')
         nbr_datas = options['nbr_datas']
-        len_ok = False
+        upgrade = options['upgrade']
+        if upgrade == 'True':
+            Del_data()
         if nbr_datas > 2:
             for element in categories:
                 if len(element) >= 3:
@@ -100,6 +125,6 @@ class Command(BaseCommand):
                 else:
                     raise CommandError("'Category element' must be longer than 3 caracters")
             if len_ok:  
-                Etl(categories,nbr_datas)
+                Etl(categories, nbr_datas)
         else:
             raise CommandError("--nbr_datas must be greater than 3")
