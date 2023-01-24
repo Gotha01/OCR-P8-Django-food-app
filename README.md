@@ -1,13 +1,13 @@
 
-# Créez une plateforme pour amateurs de Nutella
+# Create a platform for Nutella lovers
 
-La startup Pur Beurre, avec laquelle vous avez déjà travaillé, souhaite développer une plateforme web à destination de ses clients. Ce site permettra à quiconque de trouver un substitut sain à un aliment considéré comme "Trop gras, trop sucré, trop salé" (même si nous savons tous que le gras c’est la vie).
+The startup Pur Beurre, with which you have already worked, wishes to develop a web platform for its customers. This site will allow anyone to find a healthy substitute for a food considered "too fatty, too sweet, too salty" (even though we all know that fat is life).
 
 ## Badges
 <br><br>
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://choosealicense.com/licenses/mit/)
 
-![](https://img.shields.io/badge/Version-v1.2.4-orange)
+![](https://img.shields.io/badge/Version-v1.3.0-white)
 <br><br>
 
 ## Support
@@ -49,6 +49,7 @@ For support, email [Contact Us](mailto:kololasouris@hotmail.com) or by my [Githu
 
 4/ Create database and user with 
 [pgAdmin](https://www.pgadmin.org/download/pgadmin-4-windows/ "www.pgadmin.org")<br>
+
 *__Don't forget to reconfigure the 'DATABASES' part of the /purbeurre-app/settings.py file with your information (user, db name, password).__*
 
 5/ Make migrations

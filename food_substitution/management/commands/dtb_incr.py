@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 import requests
+import logging
 from django.core.management.base import BaseCommand, CommandError
 from django.core.exceptions import ObjectDoesNotExist
 
 from food_substitution.models import Products, Favorites
+
+logger = logging.getLogger(__name__)
 
 class Command(BaseCommand):
     help = "Incrementing the PurBeurre application database"
@@ -47,7 +50,8 @@ class Command(BaseCommand):
                     'url']
                 self.nbr_datas = str(number_of_products)
                 self.querycat = self.extract_from_catname()
-                self.transform_and_load()
+                self.count = self.transform_and_load()
+                logger.error(f"{self.count} products have been added to the database.")
                 
             def extract_from_catname(self):
                 """Function to get json file with all products from OpenFoodFacts."""
@@ -71,6 +75,7 @@ class Command(BaseCommand):
 
             def transform_and_load(self):
                 """Function to transform the data and prepare it before loading it into the database """
+                iteration_count = 0
                 for element in self.querycat:
                     if len(element)==len(self.value_features):
                         dropper = ['en:', 'fr:']
@@ -94,15 +99,16 @@ class Command(BaseCommand):
                                     nutritional_guidelines=element['nutrient_levels'],
                                     url=element['url'])
                                 p.save()
+                                iteration_count += 1
+                return iteration_count
 
         class Del_data():
             def __init__(self):
                 self.favorite_id_list = []
                 self.all_products = Products.objects.all()
-                print(len(self.all_products))
                 self.all_favorites = Favorites.objects.all()
                 self.search_for_non_favorite_products()
-                print(len(self.all_products))
+                logger.error("All unregistered data have been deleted", extra={'number of data':len(Products.objects.all())})
 
             def search_for_non_favorite_products(self):
                 for favorite in self.all_favorites:
