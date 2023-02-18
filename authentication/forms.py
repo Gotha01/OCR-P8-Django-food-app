@@ -11,4 +11,6 @@ class SignupForm(UserCreationForm):
         model = get_user_model()
         fields = ['email','username']
         
-
+class ModifyUser(forms.Form):
+    username = forms.CharField(max_length=63, label='username')
+    email = forms.EmailField(max_length=63, label='email')

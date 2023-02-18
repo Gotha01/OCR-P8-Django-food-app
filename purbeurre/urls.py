@@ -20,6 +20,7 @@ urlpatterns = [
             ),
         name="change_password"
         ),
+    path('change-profile/', authv.change_profile, name='change_profile'),
     path('search/', fsv.user_search_page, name="user_search"),
     path('search/<int:num_id>/', fsv.product_page, name="product_page"),
     path('profile/', authv.profile_page, name="profile_page"),

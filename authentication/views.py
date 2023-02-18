@@ -59,3 +59,15 @@ def signup_page(request):
 @login_required
 def profile_page(request):
     return render(request,'authentication/profile_page.html')
+
+@login_required
+def change_profile(request):
+    user = request.user
+    form = forms.ModifyUser(request.POST or None, initial={'username': user.username, 'email': user.email})
+    if request.method == 'POST':
+        if form.is_valid():
+            user.username = form.cleaned_data['username']
+            user.email = form.cleaned_data['email']
+            user.save()
+            return redirect('profile_page')
+    return render(request, 'authentication/modify_user.html', {'form': form})
