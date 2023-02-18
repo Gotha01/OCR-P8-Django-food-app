@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <!--Search products-->
-<section class='page-section bg-info' id='all_aliments'>
+<section class='page-section bg-info' style='min-height:95%;' id='all_aliments'>
     {% if query != None %}
         <div class='container-fluid' style='height:250px;background-image: 
                                             url({{query_first_product.image}});
@@ -14,7 +14,7 @@
             </div>
         </div>
     {% endif %}
-    <div class='container-fluid px-5' style='min-height:65%;'>
+    <div class='container-fluid px-5'>
         <div class='row'>
             {% if no_search %}
                 {% include 'food_substitution/no_search.html' %}
@@ -39,20 +39,21 @@
                                     style='max-height: 100%; max-width:100% ;'
                                     alt='...' title='{{ element }}-image'>
                             </div>
-                            <div class='' style='height:100px'>
-                                <a href="{% url 'product_page' element.id %}" style='text-decoration: none;'>
-                                    <h1 class='text-center text-primary' style='font-size: 20px;'>{{ element }}</h1>
+                            <div class='mt-md-4' style='height:100px'>
+                                <a href="{% url 'product_page' element.id %}"
+                                   class='pt-2 col-12 btn rounded-0 btn-success text-center text-light'
+                                   style='height:70px; text-decoration:none; font-size:18px;'>
+                                    {{ element }}
                                 </a>
                                 {% if user.is_authenticated %}
-                                    <div class='d-flex justify-content-center text-primary'>
+                                    <div class='d-flex justify-content-center text-success'>
                                         {% if element.id in favorites_id_list %}
                                             <i class='fa fa-floppy-o p-1'></i>
                                             <p class='align-top pt-0' style="font-weight:bold;">Déja enregistré</p>
                                         {% else %}
-                                            <i class='fa-regular fa-square-full p-1'></i>
                                             <form action="{% url 'add_favorite' %}" method='post'>
                                                 {% csrf_token %}
-                                                <input type='submit' value='Enregistrer' class='btn text-primary p-0' style="font-weight:bold;">
+                                                <input type='submit' value='Enregistrer' class='btn text-success p-0' style="font-weight:bold;">
                                                 <input type='hidden' id='prodId' name='prodId' value='{{element.id}}'>
                                             </form>
                                         {% endif %}

@@ -2,13 +2,13 @@
 {% block content %}
 
 <header class="masthead" >
-    <section class="page-section bg-info mt-15" style="margin: 10rem 2rem 2rem 2rem; padding: 1rem" id="connect">
+    <section class="page-section bg-info mt-15 text-success" style="margin: 10rem 2rem 2rem 2rem; padding: 1rem" id="connect">
         <div class="container px-4 px-lg-5">
             <div class="col-lg-12 col-md-12 text-center">
-                <h2 class="text-center mt-0 text-primary">Connectez-vous</h2>
+                <h2 class="text-center mt-0">Connectez-vous</h2>
                 <hr class="divider"></hr>
-                <p class="text-primary"> {{ message }} </p>
-                <form class="text-primary" method="post">
+                <p> {{ message }} </p>
+                <form class="pt-1" method="post">
                     {{ form.as_p }}
                     {% csrf_token %}
                     <button class="btn btn-primary text-info" type="submit"> Se connecter </button>
@@ -16,7 +16,7 @@
                         <button class="btn btn-primary text-info" type="button"> Retour </button>
                     </a>
                 </form>
-                <p class="text-primary">Pas encore membre ? <a href="{% url 'signup' %}">Inscrivez-vous maintenant !</a></p>
+                <p class="pt-4">Pas encore inscrit ? <a href="{% url 'signup' %}">Inscrivez-vous maintenant !</a></p>
             </div>
         </div>
     </section> 

@@ -2,11 +2,11 @@
 {% load static %}
 {% block content %}
 <!--Favorite products-->
-<section class='page-section bg-info' id='all_aliments'>
+<section class='page-section bg-info' style='min-height:90%;' id='all_aliments'>
     <div class='container-fluid px-5' style='min-height:65%;'>
         <div class='row'>
             {% if fav_len == 0 %}
-                <div class='col-lg-812 text-success text-center'>
+                <div class='col-lg-12 text-success text-center'>
                     <h2 class='my-5'>Vous n'avez encore sauvegardé aucun produit.<br> Faites une nouvelle recherche et validez votre produit:</h2>
                     <div class='input-group justify-content-center p-2'>
                         <form action='{% url "user_search" %}' method='get'>
@@ -14,18 +14,18 @@
                                 name='query' 
                                 class='border rounded align-middle m-0' 
                                 placeholder='Produit' 
-                                style='background-color:#EEE; height: 100%' 
+                                style='background-color:#EEE; height:auto' 
                                 aria-label='Search' 
                                 aria-describedby='search-addon' />
                             <button type='submit' 
-                                    class='btn btn-primary btn-block align-middle m-0'>Chercher</button>
+                                    class='btn btn-primary align-middle m-0'>Chercher</button>
                         </form>
                     </div>
                 </div>
             {% else %}
                 {% for element in user_fav_prod %}
-                    <div class='col-xl-4 p-5'>
-                        <div class='card m-5 border border-primary' style="background-color: #E7E7E7">
+                    <div class='col-12 col-lg-4 p-xl-5 my-3'>
+                        <div class='card m-xl-5 border border-primary' style="background-color: #E7E7E7">
                             <div class='d-flex justify-content-end pt-4'>
                                 <img src="{% static 'assets/img/'|add:element.nustriscore|add:'.png' %}"
                                     class=''
@@ -38,9 +38,18 @@
                                     style='max-height: 100%; max-width:100%;'
                                     alt='...' title='{{ element }}-image'>
                             </div>
-                            <div class='' style='height:100px'>
-                                <a href="{% url 'product_page' element.id %}" style='text-decoration: none;'>
-                                    <h1 class='text-center text-success' style='font-size: 22px;'>{{ element }}</h1>
+                            <div class='mt-4'>
+                                <a href="{% url 'product_page' element.id %}"
+                                   class='pt-2 col-12 btn rounded-0 btn-success text-center text-light'
+                                   style='height:70px; text-decoration:none; font-size: 18px;'>
+                                    {{ element }}
+                                </a>
+                            </div>
+                            <div>
+                                <a href="{% url 'delete' element.id %}"
+                                   class='py-1 col-12 btn text-center text-success' 
+                                   style='text-decoration:underline; height:25px; font-size:15px;'>
+                                    Retirer ce produit des favoris
                                 </a>
                             </div>
                         </div>

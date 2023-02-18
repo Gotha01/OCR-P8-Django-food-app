@@ -20,8 +20,13 @@
                 <h2 class="text-primary mt-0">Informations</h2>
                 <hr class="divider"></hr>
                 <p class="text-primary" style="font-size:23px">
+                    {{ user.username }}
+                </p>
+                <p class="text-primary" style="font-size:23px">
                     {{ user.email }}
                 </p>
+                <a class="btn btn-primary text-info btn-block align-middle mt-3 m-0" href="{% url 'change_password' %}">Modifier le profil</a>
+                <a class="btn btn-primary text-info btn-block align-middle mt-3 m-0" href="{% url 'change_password' %}">Modifier le mot de passe</a>
             </div>
         </div>
     </div>

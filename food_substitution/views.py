@@ -133,3 +133,9 @@ def add_favorite(request):
         products=product
         )
     return redirect('fav_page')
+
+@login_required
+def delete_favorite(request, num_id):
+    favorite = Favorites.objects.get(products_id=num_id)
+    favorite.delete()
+    return redirect('fav_page')
