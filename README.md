@@ -7,7 +7,7 @@ The startup Pur Beurre, with which you have already worked, wishes to develop a 
 <br><br>
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://choosealicense.com/licenses/mit/)
 
-![](https://img.shields.io/badge/Version-v1.4.0-white)
+![](https://img.shields.io/badge/Version-v1.4.2-white)
 <br><br>
 
 ## Application
