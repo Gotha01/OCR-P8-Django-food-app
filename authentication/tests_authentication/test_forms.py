@@ -12,7 +12,6 @@ class TestForms(SimpleTestCase):
         })
         self.assertTrue(form.is_valid())
 
-
 class SignupFormTest(TestCase):
 
     def test_signup_form_valid(self):

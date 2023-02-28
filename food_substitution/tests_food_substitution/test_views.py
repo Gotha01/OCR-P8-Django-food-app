@@ -1,7 +1,7 @@
 from django.test import TestCase, Client
 from django.urls import reverse
 from authentication.models import MyUser
-from food_substitution.models import Products
+from food_substitution.models import Products, Favorites
 
 class TestViews(TestCase):
 
@@ -9,14 +9,20 @@ class TestViews(TestCase):
         self.client = Client()
         self.home_url = reverse('home')
         self.legal_url = reverse('legal')
-        self.user_search_get_url = reverse('user_search')
-        self.user_search_post_url = reverse('fav_page')
+        self.user_search_url = reverse('user_search')
+        self.fav_page_url = reverse('fav_page')
+        self.add_fav_page_url = reverse('add_favorite')
         self.user_search_queries = (
-            {'query': 'nutella'},
+            {'query': 'product_to_db_test'},
             {'query': ''},
             {'query': 'qsdfghjk'},
             {'query': 'boissons'}
             )
+        self.user = MyUser.objects.create_user(
+            username='testuser',
+            email='test@test.com',
+            password='12345'
+        )
         self.product_to_db_test = Products.objects.create(
             id=1,
             name='product_to_db_test',
@@ -44,21 +50,17 @@ class TestViews(TestCase):
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'food_substitution/product.html')
 
-    def test_user_search_page_GET(self):
+    def test_user_search_page(self):
         for query in self.user_search_queries:
-            response = self.client.get(self.user_search_get_url, query)
+            response = self.client.get(self.user_search_url, query)
             self.assertEquals(response.status_code, 200)
             self.assertTemplateUsed(response, 'food_substitution/search_aliment.html')
     
-    def test_connected_user_search_POST_and_logout(self):
-        self.user = MyUser.objects.create_user(
-            username='testuser',
-            email='test@test.com',
-            password='12345'
-            )
+    def test_connected_user_add_favourite(self):
         self.client.login(email='test@test.com', password='12345')
-        response = self.client.post(self.user_search_post_url)
+        response = self.client.get(self.user_search_url, {'query': 'product_to_db_test'})
+        self.assertFalse(Favorites.objects.count())
         self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response,'food_substitution/favorite_list.html')
-        self.client.logout()
-        self.assertEquals(response.status_code, 200)
+        response = self.client.post(self.add_fav_page_url, {'prodId': self.product_to_db_test.id})
+        self.assertEquals(response.status_code, 302)
+        self.assertTrue(Favorites.objects.count())
