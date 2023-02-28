@@ -58,9 +58,26 @@ class TestViews(TestCase):
     
     def test_connected_user_add_favourite(self):
         self.client.login(email='test@test.com', password='12345')
-        response = self.client.get(self.user_search_url, {'query': 'product_to_db_test'})
+        response = self.client.get(
+            self.user_search_url,
+            {'query': 'product_to_db_test'}
+            )
         self.assertFalse(Favorites.objects.count())
         self.assertEquals(response.status_code, 200)
-        response = self.client.post(self.add_fav_page_url, {'prodId': self.product_to_db_test.id})
+        response = self.client.post(
+            self.add_fav_page_url,
+            {'prodId': self.product_to_db_test.id}
+            )
         self.assertEquals(response.status_code, 302)
         self.assertTrue(Favorites.objects.count())
+    
+    def test_connected_user_delete_favorite(self):
+        self.client.login(email='test@test.com', password='12345')
+        Favorites.objects.create(
+            user_id = self.user.id,
+            products = self.product_to_db_test
+            )
+        self.assertEquals(Favorites.objects.count(), 1)
+        response = self.client.get(reverse('delete', kwargs={'num_id':1}))
+        self.assertEquals(response.status_code, 302)
+        self.assertEquals(Favorites.objects.count(), 0)
